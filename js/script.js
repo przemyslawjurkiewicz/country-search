@@ -1,24 +1,23 @@
 "use strict";
-(function () {
+const url = 'https://restcountries.eu/rest/v2/name/';
+let countriesList = document.getElementById('countries');
 
-    var url = 'https://restcountries.eu/rest/v2/name/';
-    var countriesList = document.getElementById('countries');
+const searchCountries = () => {
+    let countryName = document.getElementById('country-name').value;
+    if (!countryName.length) countryName = 'Poland';
+    fetch(url + countryName)
+        .then((resp) => {
+            return resp.json();
+        })
+        .then(showCountriesList);
+}
 
-    document.getElementById('search').addEventListener('click', searchCountries);
-
-    function searchCountries() {
-        var countryName = document.getElementById('country-name').value;
-        if (!countryName.length) countryName = 'Poland';
-        fetch(url + countryName)
-            .then((resp) => {
-                return resp.json();
-            })
-            .then(showCountriesList);
+const showCountriesList = (resp) => {
+    countriesList.innerHTML = '';
+    let template = document.getElementById('country-temple').innerHTML;
+    Mustache.parse(template);
+    for (let i = 0; i < resp.length; i++) {
+        countriesList.innerHTML += Mustache.render(template, resp[i]);
     }
-
-    function showCountriesList(resp) {
-        countriesList.innerHTML = '';
-        console.log(resp);
-      }
-
-})();
+}
+document.getElementById('search').addEventListener('click', searchCountries);

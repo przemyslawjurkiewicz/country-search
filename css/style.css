@@ -5,8 +5,70 @@
 body {
   margin: 0;
   font-family: "Lato";
-  background: #62affc;
+  background: #c5c1c0;
+}
+
+.header {
+  text-align: center;
+  color: #1a2930;
+}
+
+.nav {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+button {
+  border: none;
+  background: #f7ce3e;
+  border-radius: 5px;
+  color: #fff;
+  height: 50px;
+  font-size: 20px;
+  width: 300px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  height: 50px;
+  font-size: 20px;
+  width: 300px;
+}
+
+.results {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.country-item {
+  border: 1px solid #1a2930;
+  margin: 5px;
+}
+
+.country-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  background: #1a2930;
+
+}
+
+.country-item__country-name {
+  margin-left: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
   color: #fff;
 }
 
+hr {
+  margin: 0;
+}
 
+.country-item__flag {
+  height: 80px;
+
+}

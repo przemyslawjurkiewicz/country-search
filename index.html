@@ -12,13 +12,39 @@
 </head>
 
 <body>
-    <h1>Country search engine</h1>
-    <button id="search">Search a country</button>
-    <input id="country-name" type="text" />
-    <h2>List of countries</h2>
-    <ul id="countries">
-      <li>No data</li>
-    </ul>
+    <header class="header">
+        <h1>Country search engine</h1>
+    </header>
+    <nav class="nav">
+        <input id="country-name" type="text" placeholder="Enter country name" required />
+        <button id="search">Search a country</button>
+
+    </nav>
+    <section class="results">
+        <h2>List of countries:</h2>
+        <div id="countries">
+        </div>
+    </section>
+    <script id="country-temple" type="x-tmpl-mustache">
+        <div class="country-item">
+            <div class="country-item__header">
+              <img class="country-item__flag" src="{{ flag }}">
+              <p class="country-item__country-name">{{ name }}</p>
+            </div>
+                    <h3>Informations:</h3>
+            <hr>
+            <ul class="country-item__info">
+                <li>Capital: {{capital}}</li>
+                <li>Region: {{region}}</li>
+                <li>Subregion: {{subregion}}</li>
+                <li>Population: {{population}}</li>
+                <li>Area: {{area}}</li>
+                <li>Curenties: {{#currencies}} -{{name}}{{/currencies}}</li>
+                <li>Borders: {{#borders}} -{{.}}{{/borders}}</li>
+                </ul>
+        </div>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 
